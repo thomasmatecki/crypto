@@ -1,0 +1,35 @@
+  public static List<Integer> primes(int n) {
+
+    List<Integer> result = new LinkedList<Integer>();
+
+    int lastPrime = 2;
+
+    for (int i = 1; i <= n; i++) {
+
+      result.add(lastPrime);
+
+      while (containsDivisor(result, lastPrime)) {
+        lastPrime++;
+      }
+
+    }
+    return result;
+  }
+
+  /**
+   * @param ds A list of of potential divisors
+   * @param n  The number to test against.
+   * @return `true` if `ds` contains a number the divides `n`; else `false`
+   */
+
+  public static boolean containsDivisor(List<Integer> ds, int n) {
+
+    for (int d : ds) {
+      if (n % d == 0) {
+        return true;
+      }
+    }
+
+    return false;
+
+  }
