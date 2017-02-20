@@ -1,3 +1,4 @@
+
 import java.nio.ByteBuffer;
 
 public class HashAlgorithms {
@@ -74,8 +75,7 @@ public class HashAlgorithms {
 
       }
 
-      // Initialize 8 working variables. Fill with the current hash value:
-      int[] r = new int[8];
+      // Initialize 8 working variable and fill with the current hash value:
 
       int a = hash[0];
       int b = hash[1];
