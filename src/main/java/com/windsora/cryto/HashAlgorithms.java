@@ -15,23 +15,23 @@ public class HashAlgorithms {
 
   public static void main(String[] args) {
 
-    sha256("The Quick Brown Fox Jumbed over the lazy dog! While the cat watched and the dog remained asleep.");
-    sha256("");
+    sha256(
+        "The Quick Brown Fox Jumbed over the lazy dog! While the cat watched and the dog remained asleep.".getBytes());
+    sha256("".getBytes());
 
   }
 
-  public static void sha256(String input) {
+  public static void sha256(byte[] inputBytes) {
 
     /* Initial Hash Values;  First 32 Bits of the fractional parts of the square roots of the first 8 primes */
     int[] hash = { 0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19 };
 
-    byte[] inputBytes = input.getBytes();
-
-    /** Pre-processing: Append three things to the message: a single 1 bit, some number(L) of 
+    /** Pre-processing: Append three things to the input: a single 1 bit, some number(L) of 
      * 0 bits, and 64 bits(representing a Big-Endian Integer) containing the message length(in 
      * bits) appended. The number of 0 bits(L) is the is the the smallest number that will make
      * result in a length that can be split into 64 bit chunks(i.e. K + 1 + L + 64 % 512 == 0, 
-     * where K is the length of the input message). */
+     * where K is the length of the input message). Note, this takes as input an array of bytes 
+     * and all operations are on bytes not bits. */
 
     int padLength = Math.abs((448 - (inputBytes.length + 1) * Byte.SIZE % 512)) / Byte.SIZE;
 
@@ -40,7 +40,7 @@ public class HashAlgorithms {
     // Allocate the message buffer and put the input message into it.
     ByteBuffer msgBuffer = ByteBuffer.allocate(bufferSize).put(inputBytes);
 
-    // Append the bit '1' to the message
+    // Append the byte '1000000' to the message
     msgBuffer.put(Byte.MIN_VALUE);
 
     /** Append length of message (without the '1' bit or padding), in bits, as 64-bit big-endian 
@@ -77,7 +77,6 @@ public class HashAlgorithms {
       }
 
       // Initialize 8 working variable and fill with the current hash value:
-
       int a = hash[0];
       int b = hash[1];
       int c = hash[2];
