@@ -1,3 +1,5 @@
+package com.windsora.cryto;
+
 public class HashLogger {
     public static void print512Bits(byte[] bytes) {
 
