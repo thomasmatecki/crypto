@@ -1,4 +1,4 @@
-package com.windsora.cryto;
+package com.windsora.crypto;
 
 public class HashLogger {
     public static void print512Bits(byte[] bytes) {
