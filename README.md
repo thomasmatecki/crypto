@@ -1,4 +1,4 @@
-## A handful of cryptographic primitives, schemes, and mechanisms.
+## A handful of cryptographic primitives and encryption schemes.
 
 Includes:
 * An end-to-end encryption scheme.
