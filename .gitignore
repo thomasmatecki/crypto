@@ -3,6 +3,17 @@
 .project
 .settings
 
+# IDE Config
+.idea/compiler.xml
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
+.idea/workspace.xml
+config.iml
+
+
 # Compiled class file
 *.class
 
